@@ -6,9 +6,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["cody alvarez"]
   spec.email         = ["codemk13@outlook.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{TOP US ATTACK AIRCRAFT}
+  # spec.description   = %q{TODO: Write a longer description or delete this line.}
+  spec.homepage      = "https://www.donttouchmygems.com"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
 
@@ -32,5 +32,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry"
   spec.add_dependency "nokogiri" 
   
-
 end
