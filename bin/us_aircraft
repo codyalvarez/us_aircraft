@@ -1,3 +1,5 @@
 #!/usr/bin/env ruby
 
-puts "TOP US AIRCRAFT"
+require_relative '../lib/us_aircraft'
+
+UsAircraft::CLI.new.call
