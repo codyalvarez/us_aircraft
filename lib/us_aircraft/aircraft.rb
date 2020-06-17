@@ -15,4 +15,5 @@ class UsAircraft::Aircraft
   def save
     @@all << self
   end
+  
 end

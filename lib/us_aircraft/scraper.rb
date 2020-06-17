@@ -1,5 +1,5 @@
 class UsAircraft::Scraper
-	BASE_URL = "https://www.military.com"
+  BASE_URL = "https://www.military.com"
 	
 	def self.scrape_aircraft
 		site = "#{BASE_URL}/equipment/attack-aircraft"
