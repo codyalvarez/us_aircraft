@@ -1,15 +1,10 @@
 class UsAircraft::Aircraft
   @@all = []
-  attr_accessor :name, :contractor, :service, :armament, :power_plant, :speed, :range
+  attr_accessor :path, :name, :contractor, :service, :armament, :power_plant, :speed, :range
   
-  def initialize(name)
+  def initialize(name, path)
     @name = name
-    @contractor = contractor
-    @service = service
-    @armament = armament
-    @power_plant = power_plant
-    @speed = speed
-    @range = range
+    @path = path
     save
   end
   

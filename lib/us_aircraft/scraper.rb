@@ -13,9 +13,8 @@ class UsAircraft::Scraper
 			columns = row.search('div.col-sm-4')
 			columns.each do |c|
 				name = c.search('a.text--title').text.strip
-
-				UsAircraft::Aircraft.new(name)
-				
+				path = c.search('a.text--title').attribute("href").value
+				UsAircraft::Aircraft.new(name, path)  # instantiate aircraft with the path 		
 			end
 		end
 	end
@@ -25,36 +24,38 @@ class UsAircraft::Scraper
 		page = Nokogiri::HTML(open(url))  
 
 		attrs = page.search("div#bodyContent div.field.field--label-above")
-		aircraft.contractor = self.get_contractor(attrs)
-		aircraft.service = self.get_service(attrs)
-		aircraft.armament  = self.get_armament(attrs)
-		aircraft.power_plant = self.get_power_plant(attrs)
-		aircraft.speed = self.get_speed(attrs)
-		aircraft.range = self.get_range(attrs)
+		# binding.pry
+		page.css(".field--label-above")[0].text.gsub(/\s+/, " ")
+		aircraft.contractor = page.css(".field--label-above")[0].text.gsub(/\s+/, " ")
+		aircraft.service = page.css(".field--label-above")[1].text.gsub(/\s+/, " ")
+		aircraft.armament = page.css(".field--label-above")[2].text.gsub(/\s+/, " ")
+		aircraft.power_plant = page.css(".field--label-above")[3].text.gsub(/\s+/, " ")
+		aircraft.speed = page.css(".field--label-above")[4].text.gsub(/\s+/, " ")
+		aircraft.range = page.css(".field--label-above")[5].text.gsub(/\s+/, " ")
     end
-    
-    def self.contractor(data)
-		contractor = data[0].text.strip
-	end
 
-	def self.service(data)
-		service = data[1].text.strip
-	end
+    def self.thunderbolt
+      url = "https://www.military.com/equipment/a-10-thunderbolt-ii"
+      page = Nokogiri::HTML(open(url))
 
-	def self.armament(data)
-		armament = data[2].text.strip
-	end
+      attrs = page.search("div#bodyContent div.field.field--label-above")
+      
+      page.css(".field--label-above")[0].text.gsub(/\s+/, " ")
+      aircraft.contractor = page.css(".field--label-above")[0].text.gsub(/\s+/, " ")
+  		aircraft.service = page.css(".field--label-above")[1].text.gsub(/\s+/, " ")
+  		aircraft.armament = page.css(".field--label-above")[2].text.gsub(/\s+/, " ")
+  		aircraft.power_plant = page.css(".field--label-above")[3].text.gsub(/\s+/, " ")
+  		aircraft.speed = page.css(".field--label-above")[4].text.gsub(/\s+/, " ")
+      aircraft.range = page.css(".field--label-above")[5].text.gsub(/\s+/, " ")
+    end
 
-	def self.get_power_plant(data)
-		power_plant = data[3].text.strip
-	end
 
-	def self.get_speed(data)
-		speed = data[4].text.strip
-	end
 
-	def self.get_range(data)
-		range = data[5].text.strip
-	end
+    end
+
+    # def thunderbolt
+    #   page.css(".field--label-above")[0].text.gsub(/\s+/, " ")
+
+    # end
 
 end
