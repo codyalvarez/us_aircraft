@@ -4,12 +4,12 @@ class UsAircraft::Aircraft
   
   def initialize(name)
     @name = name
-    # @contractor = contractor
-    # @service = service
-    # @armament = armament
-    # @power_plant = power_plant
-    # @speed = speed
-    # @range = range
+    @contractor = contractor
+    @service = service
+    @armament = armament
+    @power_plant = power_plant
+    @speed = speed
+    @range = range
     save
   end
   

@@ -47,22 +47,8 @@ class UsAircraft::CLI
   end
 
  def get_more_info_for_aircraft
-    aircraft = gets.strip.to_i
-    UsAircraft::Scraper.more_info_for_aircraft(aircraft)
-    chosen_aircraft = user_input
-    list_aircraft(chosen_aircraft) if valid_input(chosen_aircraft, @aircraft)
-    if user_input == "exit"
-      exit!
-    elsif
-      user_input == "menu"
-      main_menu
-    else
-      puts "Not a valid option."
-    end
-  end
-
-  def about_aircraft
-    aircraft = @aircraft[chosen_aircraft - 1]
+    aircraft = gets.strip.to_i #sintrg to an integer to_i
+    UsAircraft::Scraper.more_info_for_aircraft(aircraft)  
     puts "AIRCRAFT INTEL FOR #{aircraft}."
     UsAircraft::Aircraft.all.each.with_index(1) do |aircraft|
     puts "#{aircraft.contractor} - #{aircraft.service} - #{aircraft.armament} - #{aircraft.power_plant} - #{aircraft.speed} - #{aircraft.range}"
@@ -75,4 +61,4 @@ class UsAircraft::CLI
 
 end
 
-# # end
+
