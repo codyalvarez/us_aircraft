@@ -12,7 +12,10 @@ class UsAircraft::Scraper
 		rows.each do |row|
 			columns = row.search('div.col-sm-4')
 			columns.each do |c|
-				p c.search('a.text--title').text.strip
+				name = c.search('a.text--title').text.strip
+
+				UsAircraft::Aircraft.new(name)
+				
 			end
 		end
 	end

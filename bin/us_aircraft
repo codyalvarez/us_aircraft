@@ -3,3 +3,4 @@
 require_relative '../lib/us_aircraft'
 
 UsAircraft::CLI.new.call
+

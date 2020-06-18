@@ -1,15 +1,15 @@
 class UsAircraft::Aircraft
-  @@all = [""]
+  @@all = []
   attr_accessor :name, :contractor, :service, :armament, :power_plant, :speed, :range
   
   def initialize(name)
     @name = name
-    @contractor = contractor
-    @service = service
-    @armament = armament
-    @power_plant = power_plant
-    @speed = speed
-    @range = range
+    # @contractor = contractor
+    # @service = service
+    # @armament = armament
+    # @power_plant = power_plant
+    # @speed = speed
+    # @range = range
     save
   end
   
