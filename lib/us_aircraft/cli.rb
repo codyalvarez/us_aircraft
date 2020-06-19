@@ -9,20 +9,11 @@ class UsAircraft::CLI
     user_input = gets.strip
   end
 
-  def sleep_counter
-    sleep(1.0)
-    puts "."
-    sleep(1.0)
-    puts ".."
-    sleep(1.0)
-  end
-
   def main_menu
     puts "Type 'list' to see aircraft or 'exit' to exit program."
     case user_input
     when 'list'
       puts "Sure thing, loading database."
-      # sleep_counter
       list_aircraft
     when 'exit', 'quit'
       goodbye
@@ -48,18 +39,8 @@ class UsAircraft::CLI
 
  def get_more_info_for_aircraft
     index = gets.strip.to_i #sintrg to an integer to_i
-    aircraft = UsAircraft::Aircraft.all[index - 1]
-    # UsAircraft::Scraper.more_info_for_aircraft(aircraft)  
+    aircraft = UsAircraft::Aircraft.all[index - 1] 
     puts "AIRCRAFT INTEL FOR #{aircraft.name}."
-    # UsAircraft::Aircraft.all.each.with_index(1) do |aircraft|
-    # puts "#{aircraft.contractor}
-    # #{aircraft.service} 
-    # #{aircraft.armament} 
-    # #{aircraft.power_plant} 
-    # #{aircraft.speed} 
-    # #{aircraft.range}"
-    # end
-    # main_menu
     case user_input
     when "1"
       thunderbolt
@@ -101,7 +82,7 @@ class UsAircraft::CLI
       puts "Not a valid option, no surrender ! Try again !"
     end
   end
-
+    
   def valid_input(input, data)
     input.to_i <= data.length && input.to_i > 0
   end
