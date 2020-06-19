@@ -49,7 +49,7 @@ class UsAircraft::CLI
  def get_more_info_for_aircraft
     index = gets.strip.to_i #sintrg to an integer to_i
     aircraft = UsAircraft::Aircraft.all[index - 1]
-    UsAircraft::Scraper.more_info_for_aircraft(aircraft)  
+    # UsAircraft::Scraper.more_info_for_aircraft(aircraft)  
     puts "AIRCRAFT INTEL FOR #{aircraft.name}."
     # UsAircraft::Aircraft.all.each.with_index(1) do |aircraft|
     # puts "#{aircraft.contractor}
@@ -63,6 +63,40 @@ class UsAircraft::CLI
     case user_input
     when "1"
       thunderbolt
+    when "2"
+      raptor
+    when "3"
+      f_35a_lightning
+    when "4"
+      hornet
+    when "5"
+      fighting_falcon
+    when "6"
+      growler_us_navy_aircraft
+    when "7"
+      super_hornet
+    when "8"
+      kiowa_warrior
+    when "9"
+      stinger
+    when "10"
+      reaper
+    when "11"
+      predator
+    when "12"
+      f_35c_lightning
+    when "13"
+      f_35b_lightning
+    when "14"
+      strike_eagle
+    when "15"
+      apache_longbow
+    when "16"
+      super_cobra
+    when "17"
+      viper
+    when "18"
+      harrier   
     else
       puts "Not a valid option, no surrender ! Try again !"
     end
