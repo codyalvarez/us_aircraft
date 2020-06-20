@@ -1,7 +1,7 @@
 require "pry"
 class UsAircraft::CLI
   def call
-    puts "\nTop US Attack Aircraft.\n"
+    puts "Top US Attack Aircraft."
     main_menu
   end
 
@@ -34,54 +34,25 @@ class UsAircraft::CLI
     @aircraft.each.with_index(1) do |aircraft, index|
       puts "#{index}. #{aircraft.name}"
     end
-    get_more_info_for_aircraft
+    aircraft_intel
   end
 
- def get_more_info_for_aircraft
+ def aircraft_intel
+  puts "Choose an aircraft by index for more information."
     index = gets.strip.to_i #sintrg to an integer to_i
     aircraft = UsAircraft::Aircraft.all[index - 1] 
     puts "AIRCRAFT INTEL FOR #{aircraft.name}."
-    case user_input
-    when "1"
-      self.thunderbolt.new
-    when "2"
-      self.raptor.new
-    when "3"
-      self.f_35a_lightning.new
-    when "4"
-      self.hornet.new
-    when "5"
-      self.fighting_falcon.new
-    when "6"
-      self.growler_us_navy_aircraft.new
-    when "7"
-      self.super_hornet.new
-    when "8"
-      self.kiowa_warrior.new
-    when "9"
-      self.stinger.new
-    when "10"
-      self.reaper.new
-    when "11"
-      self.predator.new
-    when "12"
-      self.f_35c_lightning.new
-    when "13"
-      self.f_35b_lightning.new
-    when "14"
-      self.strike_eagle.new
-    when "15"
-      self.apache_longbow.new
-    when "16"
-      self.super_cobra.new
-    when "17"
-      self.viper.new
-    when "18"
-      self.harrier.new   
+    if index == "1" || index == "2"
+      self.info_for_aircraft.new(aircraft)
+      main_menu
+    elsif user_input== between?(3, 18)
+      self.info_for_aircraft_two.new(aircraft)
+      main_menu
     else
-      puts "Not a valid option, no surrender ! Try again !"
+      puts "Not a valid option, no surrender ! Try again !" 
+      info_for_aircraft
     end
-  end
+  end 
     
   def valid_input(input, data)
     input.to_i <= data.length && input.to_i > 0
