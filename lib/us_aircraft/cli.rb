@@ -40,7 +40,7 @@ class UsAircraft::CLI
  def aircraft_intel
   puts "Choose an aircraft by index for more information."
   index = gets.strip.to_i #sintrg to an integer to_i
-  aircraft = UsAircraft::Aircraft.all[index - 1] 
+  aircraft = UsAircraft::Aircraft.all[index - 1]
   puts "AIRCRAFT INTEL FOR #{aircraft.name}."
   case index
     when 1..2
