@@ -39,21 +39,21 @@ class UsAircraft::CLI
 
  def aircraft_intel
   puts "Choose an aircraft by index for more information."
-    index = gets.strip.to_i #sintrg to an integer to_i
-    aircraft = UsAircraft::Aircraft.all[index - 1] 
-    puts "AIRCRAFT INTEL FOR #{aircraft.name}."
-    if index == "1" || index == "2"
-      self.info_for_aircraft.new(aircraft)
+  index = gets.strip.to_i #sintrg to an integer to_i
+  aircraft = UsAircraft::Aircraft.all[index - 1] 
+  puts "AIRCRAFT INTEL FOR #{aircraft.name}."
+  case index
+    when 1..2
+      puts UsAircraft::Scraper.info_for_aircraft(aircraft)
       main_menu
-    elsif user_input== between?(3, 18)
-      self.info_for_aircraft_two.new(aircraft)
+    when 3..18
+      puts UsAircraft::Scraper.info_for_aircraft_two(aircraft)
       main_menu
     else
-      puts "Not a valid option, no surrender ! Try again !" 
-      info_for_aircraft
+      puts "Not a valid option. No compromise ! No surrender ! Try again !"
     end
-  end 
-    
+  end
+       
   def valid_input(input, data)
     input.to_i <= data.length && input.to_i > 0
   end
