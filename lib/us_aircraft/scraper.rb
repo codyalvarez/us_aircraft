@@ -33,5 +33,7 @@ class UsAircraft::Scraper
   end
 end
 
+# how to push return to next line, if its going to be cut short.
+
 
 

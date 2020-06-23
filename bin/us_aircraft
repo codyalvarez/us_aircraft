@@ -4,3 +4,5 @@ require_relative '../lib/us_aircraft'
 
 UsAircraft::CLI.new.call
 
+# instantiate a new object of cli, 
+# env folder
