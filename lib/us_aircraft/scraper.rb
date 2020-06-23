@@ -28,9 +28,8 @@ class UsAircraft::Scraper
     url = "#{BASE_URL}#{aircraft.path}"
     page = Nokogiri::HTML(open(url))
 	var1 = page.css("div#bodyContent p")[0].text.strip.gsub(/\s+/, " ")
-	var2 = page.css("div#bodyContent p")[1].text.strip.gsub(/\s+/, " ")
-	var3 = var2 = page.css("div#bodyContent p")[2].text.strip.gsub(/\s+/, " ")		
-    intel = [var1, var2, var3].join('')
+	var2 = page.css("div#bodyContent p")[1].text.strip.gsub(/\s+/, " ")		
+    intel = [var1, var2].join('')
   end
 end
 
