@@ -2,6 +2,7 @@ require "pry"
 class UsAircraft::CLI
   def call
     puts "Top US Attack Aircraft."
+    scrape_list
     main_menu
   end
 
@@ -27,9 +28,12 @@ class UsAircraft::CLI
     puts "Goodbye! Have a nice day!"
   end
 
+  def scrape_list
+    UsAircraft::Scraper.scrape_aircraft
+  end
+
   def list_aircraft
     puts "Lighting speeds, hundreds of succesful missions, the greatest US Attack Aircraft to date."
-    UsAircraft::Scraper.scrape_aircraft
     @aircraft = UsAircraft::Aircraft.all
     @aircraft.each.with_index(1) do |aircraft, index|
       puts "#{index}. #{aircraft.name}"
@@ -41,12 +45,14 @@ class UsAircraft::CLI
   puts "Choose an aircraft by index for more information."
   index = gets.strip.to_i #sintrg to an integer to_i
   aircraft = UsAircraft::Aircraft.all[index - 1]
-  puts "AIRCRAFT INTEL FOR #{aircraft.name}."
+  # puts "AIRCRAFT INTEL FOR #{aircraft.name}."
   case index
     when 1..2
+      puts "AIRCRAFT INTEL FOR #{aircraft.name}."
       puts UsAircraft::Scraper.info_for_aircraft(aircraft)
       main_menu
     when 3..18
+      puts "AIRCRAFT INTEL FOR #{aircraft.name}."
       puts UsAircraft::Scraper.info_for_aircraft_two(aircraft)
       main_menu
     else
